@@ -3,6 +3,7 @@
 A Spring Boot project built as part of the Jumpstart Development Programme.
 
 ---
+## Author: Asisipho
 
 ## Project Details
 
