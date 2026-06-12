@@ -115,3 +115,6 @@ Screenshots are available in the `/screenshots` folder.
 2. Configure `application.properties` with your MySQL credentials
 3. Run `FoodOrderingSystemApplication.java`
 4. Access the app at `http://localhost:8080`
+
+## Status
+Assignment completed ✅
