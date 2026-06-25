@@ -1,19 +1,49 @@
 package food_ordering_system.dto;
 
 /**
- * DTO stands for Data Transfer Object.
- * Instead of sending the full entity to the client,
- * we use a DTO to control exactly what data is exposed.
- * This keeps our API clean and secure.
+ * The purpose of DTO(Data Transfer Object) is to move
+ * data between application layers and format the final
+ * JSON response for the API
  */
 public class CategoryDto {
 
     private Long id;
     private String name;
+    private String description;
 
-    // Getters and Setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    // 1. Default No-Args Constructor (Required by frameworks like Spring/Jackson)
+    public CategoryDto() {
+    }
+
+    // 2. All-Args Constructor
+    public CategoryDto(Long id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+    }
+
+    // 3. Getters and Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

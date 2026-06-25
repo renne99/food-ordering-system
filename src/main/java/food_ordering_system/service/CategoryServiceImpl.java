@@ -35,6 +35,8 @@ public class CategoryServiceImpl implements CategoryService {
             CategoryDto dto = new CategoryDto();
             dto.setId(category.getId());
             dto.setName(category.getName());
+
+            dto.setDescription(category.getDescription());
             categoryDtos.add(dto);
         }
 
