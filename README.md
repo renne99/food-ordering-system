@@ -103,11 +103,19 @@ Things like security settings or custom beans go here.
 This package handles errors in a clean way.
 Instead of the app crashing, we catch and manage errors here.
 
+## Endpoints
+
+| Method | URL                     | Body                     |
+|--------|-------------------------|--------------------------|
+| POST   | /api/categories         | { "name", "description" }|
+| GET    | /api/categories         | -                        |
+| GET    | /api/categories/{id}    | -                        |
+| PUT    | /api/categories/{id}    | { "name", "description" }|
+| DELETE | /api/categories/{id}    | -                        |
+
 ## Screenshots
 
 Screenshots are available in the `/screenshots` folder.
-
----
 
 ## How to Run
 
