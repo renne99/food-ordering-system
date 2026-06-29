@@ -1,5 +1,8 @@
 package food_ordering_system.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 /**
  * The purpose of DTO(Data Transfer Object) is to move
  * data between application layers and format the final
@@ -8,7 +11,11 @@ package food_ordering_system.dto;
 public class CategoryDto {
 
     private Long id;
+
+    @NotBlank(message = "Category name is required")
+    @Size(min = 2, max = 50, message = "Name must be 2-50 characters")
     private String name;
+
     private String description;
 
     // 1. Default No-Args Constructor (Required by frameworks like Spring/Jackson)
