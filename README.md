@@ -67,7 +67,7 @@ them automatically. This makes your code cleaner and easier to manage.
 
 ## Database Setup
 
-- **Database:** food_ordering_db
+- **Database:** food_ordering
 - **Table:** category
 - **Records inserted:** Fast Food, Pizza, Drinks, Desserts
 
