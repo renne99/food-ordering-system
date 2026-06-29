@@ -1,6 +1,7 @@
 package food_ordering_system.controller;
 
 import food_ordering_system.dto.CategoryDto;
+import food_ordering_system.response.Response;
 import food_ordering_system.service.CategoryService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,37 +28,43 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
-    // GET all categories
+    // 1. GET ALL
     @GetMapping
-    public ResponseEntity<List<CategoryDto>> getAllCategories() {
-        return ResponseEntity.ok(categoryService.getAllCategories());
+    public ResponseEntity<Response<List<CategoryDto>>> getAllCategories() {
+        List<CategoryDto> categories = categoryService.getAllCategories();
+        return ResponseEntity.ok(Response.success("All categories retrieved successfully", categories));
     }
 
-    // [Task 4.1] GET single category by ID
+    // 2. GET BY ID [Task 4.1 Refactored]
     @GetMapping("/{id}")
-    public ResponseEntity<CategoryDto> getCategoryById(@PathVariable Long id) {
-        return ResponseEntity.ok(categoryService.getCategoryById(id));
+    public ResponseEntity<Response<CategoryDto>> getCategoryById(@PathVariable Long id) {
+        CategoryDto dto = categoryService.getCategoryById(id);
+        return ResponseEntity.ok(Response.success("Category retrieved", dto));
     }
 
-    // [Task 4.2] POST create a category
+    // 3. POST CREATE [Task 4.2 Refactored]
     @PostMapping
-    public ResponseEntity<CategoryDto> addCategory(@Valid @RequestBody CategoryDto categoryDto) {
+    public ResponseEntity<Response<CategoryDto>> addCategory(@Valid @RequestBody CategoryDto categoryDto) {
         CategoryDto savedCategory = categoryService.addCategory(categoryDto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedCategory);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(Response.success("Category created successfully", savedCategory));
     }
 
-    // [Task 4.4] PUT update a category
+    // 4. PUT UPDATE [Task 4.4 Refactored]
     @PutMapping("/{id}")
-    public ResponseEntity<CategoryDto> updateCategory(
+    public ResponseEntity<Response<CategoryDto>> updateCategory(
             @PathVariable Long id,
             @Valid @RequestBody CategoryDto categoryDto) {
-        return ResponseEntity.ok(categoryService.updateCategory(id, categoryDto));
+        CategoryDto updatedCategory = categoryService.updateCategory(id, categoryDto);
+        return ResponseEntity.ok(Response.success("Category updated successfully", updatedCategory));
     }
 
-    // [Task 4.5] DELETE a category
+    // 5. DELETE [Task 4.5 Refactored]
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCategory(@PathVariable Long id) {
+    public ResponseEntity<Response<Void>> deleteCategory(@PathVariable Long id) {
         categoryService.deleteCategory(id);
-        return ResponseEntity.noContent().build(); // Status 204
+        // We use 200 OK here instead of 204 NoContent because 204 forces an empty body,
+        // but we want to display our message payload to the user!
+        return ResponseEntity.ok(Response.success("Category deleted successfully", null));
     }
 }
