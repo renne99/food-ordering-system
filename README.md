@@ -113,16 +113,26 @@ Instead of the app crashing, we catch and manage errors here.
 | PUT    | /api/categories/{id}    | { "name", "description" }|
 | DELETE | /api/categories/{id}    | -                        |
 
+## API Response Format
+
+All API interactions return a standardized global response payload format:
+
+```json
+{
+  "statusCode": 200,
+  "message": "Category retrieved",
+  "data": {
+    "id": 1,
+    "name": "Burgers",
+    "description": "Gourmet beef and chicken burgers"
+  },
+  "timestamp": "2026-06-28T14:22:11"
+}
+
 ## Screenshots
 
 Screenshots are available in the `/screenshots` folder.
 
-## How to Run
-
-1. Clone the repository
-2. Configure `application.properties` with your MySQL credentials
-3. Run `FoodOrderingSystemApplication.java`
-4. Access the app at `http://localhost:8080`
 
 ## Status
 Assignment completed ✅
